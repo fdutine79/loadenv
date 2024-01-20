@@ -46,4 +46,6 @@ load_environment <- function(packages) {
   if (as.integer(prmt_pm) == 1) {
     maintain_packages(packageload_man)
   }
+
+  rm(packages)
 }
