@@ -18,7 +18,6 @@ load_environment <- function(packages) {
   # Flush cache
   # Remove GLOBAL variables except 'packages'
   cat("\014")
-  rm(list = setdiff(ls(all.names = TRUE), "packages"), envir = .GlobalEnv)
 
   # Set options
   options(scipen = 999)
