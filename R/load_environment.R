@@ -21,6 +21,10 @@ load_environment <- function(packages) {
   # Install missing packages
   install_packages(packages)
 
+  # Build new pacakges vector
+  # with GitHub hosts removed
+  packages <- gsub(".*/", "", packages)
+
   # Start linting
   usethis::use_tidy_style()
 
