@@ -59,4 +59,26 @@ load_environment <- function(packages) {
   }
 
   rm(packages)
+  finish_maintenance()
+}
+
+
+# Function finish_maintenance ---------------------------------------------
+
+#' Finish package maintenance
+#'
+#' @importFrom crayon bold green
+#' @importFrom grDevices dev.set
+#'
+#' @export
+#'
+#' @examples
+#' finish_maintenance()
+finish_maintenance <- function() {
+  cat("\n")
+  dev.set()
+  print(R.version)
+  gc()
+  cat("\n")
+  cat(paste0(green(bold("\u2714"), "(Done)"), "\tPackage maintenance finished\n"))
 }

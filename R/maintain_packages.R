@@ -49,26 +49,14 @@ maintain_packages <- function(packageload_man) {
       ifelse(l_man > 0, "\n\n\tManually loaded unused packages should be immediately removed.", "")
     ))
 
-    prmt_pm <- readline(prompt = cat(paste0(
-      "\n\nDo you want to proceed anyway?\n\n",
-      "1: Yes\n",
-      "2: No"
-    )))
-
-    if (as.integer(prmt_pm) == 2) {
-      cat(paste0(red(bold("\u2717"), "(Stop)"), "\tPlease clean up your environment\n"))
-    } else {
-      cat(paste0(yellow(bold("\u26A0"), "(Warning)"), "\tEnvironment clean up skipped\n"))
-      finish_maintenance()
-    }
+    cat(paste0(yellow(bold("\u2717"), "(Warning)"), "\tPlease clean up your environment\n"))
   } else {
     cat(paste0(green(bold("\u2714"), "(Done)"), "\tEnvironment is clean\n"))
-    finish_maintenance()
   }
 
   rm(
     packageload_all, used_functions, used_packages, unused_packages_all, unused_packages_man,
-    l_all, l_man, s_all, s_man, prmt_pm
+    l_all, l_man, s_all, s_man
   )
 }
 
@@ -166,25 +154,4 @@ get_used_packages <- function(used_functions) {
   cat(paste0(green(bold("\u2714"), "(Done)"), "\tUsed packages found\n"))
 
   return(used_packages)
-}
-
-
-# Function finish_maintenance ---------------------------------------------
-
-#' Finish package maintenance
-#'
-#' @importFrom crayon bold green
-#' @importFrom grDevices dev.set
-#'
-#' @export
-#'
-#' @examples
-#' finish_maintenance()
-finish_maintenance <- function() {
-  cat("\n")
-  dev.set()
-  print(R.version)
-  gc()
-  cat("\n")
-  cat(paste0(green(bold("\u2714"), "(Done)"), "\tPackage maintenance finished\n"))
 }
