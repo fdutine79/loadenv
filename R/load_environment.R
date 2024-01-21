@@ -16,8 +16,9 @@ load_environment <- function(packages) {
   gc()
 
   # Flush cache
+  # Remove GLOBAL variables
   cat("\014")
-  rm(list = ls(all.names = TRUE))
+  rm(list = ls(all.names = TRUE), envir = .GlobalEnv)
 
   # Set options
   options(scipen = 999)
@@ -58,8 +59,8 @@ load_environment <- function(packages) {
     maintain_packages(packageload_man)
   }
 
-  # Remove GLOBAL variable
-  rm(packages, envir = .GlobalEnv)
+  # Remove GLOBAL variables
+  rm(list = ls(all.names = TRUE), envir = .GlobalEnv)
 
   finish_maintenance()
 }
