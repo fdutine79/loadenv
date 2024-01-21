@@ -4,10 +4,17 @@
 #'
 #' @param packages A vector with package names.
 #'
+#' @importFrom grDevices dev.list dev.off
 #' @importFrom usethis use_tidy_style
 #'
 #' @export
 load_environment <- function(packages) {
+  # Clean up
+  if (NROW(dev.list()) > 0) {
+    dev.off()
+  }
+  gc()
+
   # Flush cache
   cat("\014")
   rm(list = ls(all.names = TRUE))

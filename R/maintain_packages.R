@@ -59,9 +59,11 @@ maintain_packages <- function(packageload_man) {
       cat(paste0(red(bold("\u2717"), "(Stop)"), "\tPlease clean up your environment\n"))
     } else {
       cat(paste0(yellow(bold("\u26A0"), "(Warning)"), "\tEnvironment clean up skipped\n"))
+      finish_maintenance()
     }
   } else {
     cat(paste0(green(bold("\u2714"), "(Done)"), "\tEnvironment is clean\n"))
+    finish_maintenance()
   }
 
   rm(
@@ -164,4 +166,25 @@ get_used_packages <- function(used_functions) {
   cat(paste0(green(bold("\u2714"), "(Done)"), "\tUsed packages found\n"))
 
   return(used_packages)
+}
+
+
+# Function finish_maintenance ---------------------------------------------
+
+#' Finish package maintenance
+#'
+#' @importFrom crayon bold green
+#' @importFrom grDevices dev.set
+#'
+#' @export
+#'
+#' @examples
+#' finish_maintenance()
+finish_maintenance <- function() {
+  cat("\n")
+  dev.set()
+  print(R.version)
+  gc()
+  cat("\n")
+  cat(paste0(green(bold("\u2714"), "(Done)"), "\tPackage maintenance finished\n"))
 }
