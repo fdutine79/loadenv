@@ -58,7 +58,9 @@ load_environment <- function(packages) {
     maintain_packages(packageload_man)
   }
 
-  rm(packages)
+  # Remove GLOBAL variable
+  rm(packages, envir = .GlobalEnv)
+
   finish_maintenance()
 }
 
