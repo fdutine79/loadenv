@@ -75,10 +75,7 @@ load_environment <- function(packages) {
 #' @examples
 #' finish_maintenance()
 finish_maintenance <- function() {
-  cat("\n")
   dev.set()
-  print(R.version)
   gc()
-  cat("\n")
-  cat(paste0(green(bold("\u2714"), "(Done)"), "\tPackage maintenance finished\n"))
+  cat(paste0("\n", green(bold("\u2714"), "(Done)"), "\tPackage maintenance finished\n"))
 }

@@ -49,7 +49,7 @@ maintain_packages <- function(packageload_man) {
       ifelse(l_man > 0, "\n\n\tManually loaded unused packages should be immediately removed.", "")
     ))
 
-    cat(paste0(yellow(bold("\u2717"), "(Warning)"), "\n\n\tPlease clean up your environment\n"))
+    cat(paste0("\n\n", yellow(bold("\u2717"), "(Warning)"), "\tPlease clean up your environment\n"))
   } else {
     cat(paste0(green(bold("\u2714"), "(Done)"), "\tEnvironment is clean\n"))
   }

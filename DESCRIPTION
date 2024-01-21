@@ -1,12 +1,14 @@
 Package: loadenv
-Title: What the Package Does (One Line, Title Case)
+Title: Set up a clean package environment
 Version: 0.0.0.9007
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: GPL (>= 3)
+    person("Frank", "Dutine", , "mail@frankdutine.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0926-9116"))
+Description: The package installs missing packages, executes linting,
+  and identifies superfluous packages installed in the environment.
+  It will notify, which packages can be removed from the environment.
 Encoding: UTF-8
+BugReports: https://github.com/fdutine79/loadenv/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.0
 Imports:
@@ -19,3 +21,6 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)
+License: GPL (>= 3)
