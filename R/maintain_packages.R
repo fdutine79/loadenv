@@ -45,11 +45,15 @@ maintain_packages <- function(packageload_man) {
   if (l_all > 0 || l_man > 0) {
     cat(paste0(
       "\n\nUnused packages were found.",
-      ifelse(l_all > 0, "\n\n\tGlobally loaded unused packages might result from dependencies from required packages.\n\tImmediate action might not be neccessary.\n\tPlease make sure, no `library()` function is run in other files than `LoadEnvironment.R`.", ""),
+      ifelse(l_all > 0, "\n\n\tGlobally loaded unused packages might result from dependencies from required packages.\n\tImmediate action might not be neccessary.\n\tPlease make sure, no `library()` function is run in other files than symbol `packages`.", ""),
       ifelse(l_man > 0, "\n\n\tManually loaded unused packages should be immediately removed.", "")
     ))
 
-    cat(paste0("\n\n", yellow(bold("\u2717"), "(Warning)"), "\tPlease clean up your environment\n"))
+    if (l_man > 0) {
+      cat(paste0("\n\n", red(bold("\u2717"), "(Warning)"), "\tPlease clean up your environment now!\n"))
+    } else {
+      cat(paste0("\n\n", yellow(bold("\u26A0"), "(Warning)"), "\tPlease clean up your environment\n"))
+    }
   } else {
     cat(paste0(green(bold("\u2714"), "(Done)"), "\tEnvironment is clean\n"))
   }
