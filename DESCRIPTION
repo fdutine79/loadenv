@@ -1,6 +1,6 @@
 Package: loadenv
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Authors@R: 
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
@@ -10,7 +10,9 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.0
 Imports:
+  available,
   crayon,
+  devtools,
   NCmisc,
   usethis
 Suggests: 
