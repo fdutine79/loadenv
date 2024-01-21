@@ -33,7 +33,7 @@ load_environment <- function(packages) {
   # Install missing packages
   install_packages(packages)
 
-  # Build new pacakges vector
+  # Build new packages vector
   # with GitHub hosts removed
   packages <- gsub(".*/", "", packages)
 
