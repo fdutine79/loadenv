@@ -5,8 +5,6 @@
 #' @param packageload_man Vector with manually loaded packages.
 #'
 #' @importFrom crayon bold green red yellow
-#'
-#' @export
 maintain_packages <- function(packageload_man) {
   # Get all loaded packages
   packageload_all <- get_all_loaded_packages()
@@ -70,8 +68,6 @@ maintain_packages <- function(packageload_man) {
 #' Get all loaded packages
 #'
 #' @return Vector with all loaded packages.
-#'
-#' @export
 get_all_loaded_packages <- function() {
   packageload_all <- search()
   packageload_all <- search()[(search() %in% packageload_all)] |>
@@ -91,8 +87,6 @@ get_all_loaded_packages <- function() {
 #' @importFrom crayon blue bold cyan green
 #' @importFrom NCmisc list.functions.in.file
 #' @importFrom utils setTxtProgressBar txtProgressBar
-#'
-#' @export
 get_used_functions <- function() {
   # Iterate all .R-files
   cat(paste0(blue(bold("\U1F6C8"), "(Wait)"), "\tSearching used functions in packages\n"))
@@ -143,8 +137,6 @@ get_used_functions <- function() {
 #' @return Vector with used packages.
 #'
 #' @importFrom crayon bold green
-#'
-#' @export
 get_used_packages <- function(used_functions) {
   up <- gsub("c\\(([^]]+))", "\\1", names(used_functions))
   up <- gsub(", ", ",", up)

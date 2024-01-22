@@ -7,8 +7,6 @@
 #' @importFrom crayon bold cyan green
 #'
 #' @return Vector with manually loaded packages.
-#'
-#' @export
 load_packages <- function(packages) {
   start_time <- Sys.time()
   packageload_man <- packages

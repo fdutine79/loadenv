@@ -1,8 +1,6 @@
 # Function unload_packages ------------------------------------------------
 
 #' Unloads all but base packages
-#'
-#' @export
 unload_packages <- function() {
   start_time <- Sys.time()
   packages_loaded <- grep(pattern = "package:", value = TRUE, search())

@@ -9,6 +9,3 @@ finish_maintenance()
 \description{
 Finish package maintenance
 }
-\examples{
-finish_maintenance()
-}

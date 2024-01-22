@@ -78,11 +78,6 @@ load_environment <- function(packages) {
 #'
 #' @importFrom crayon bold green
 #' @importFrom grDevices dev.set
-#'
-#' @export
-#'
-#' @examples
-#' finish_maintenance()
 finish_maintenance <- function() {
   dev.set()
   gc()
