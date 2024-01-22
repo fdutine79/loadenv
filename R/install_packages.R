@@ -7,8 +7,6 @@
 #' @importFrom available available_on_cran available_on_github
 #' @importFrom devtools install_github
 #' @importFrom utils install.packages installed.packages
-#'
-#' @export
 install_packages <- function(packages) {
   cat(paste0("\U1F6C8", " (Wait)", "\tSearching and installing missing packages\n"))
   start_time <- Sys.time()
