@@ -10,7 +10,7 @@ Description: The package installs missing packages, executes linting,
 Encoding: UTF-8
 BugReports: https://github.com/fdutine79/loadenv/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.0
+RoxygenNote: 7.3.1
 Imports:
   available,
   crayon,

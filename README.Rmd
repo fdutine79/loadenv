@@ -28,9 +28,7 @@ loadenv will solve those problems. loadenv will ...
 You can install the development version of loadenv like so:
 
 ``` r
-if ("devtools" %in% rownames(installed.packages()) == FALSE) {
-  install.packages("devtools")
-}
+#install.packages("devtools")
 if ("loadenv" %in% rownames(installed.packages()) == FALSE) {
   devtools::install_github("fdutine79/loadenv")
 }
@@ -54,4 +52,6 @@ packages <- c(
 loadenv::load_environment(packages)
 ```
 
-The package installs missing packages, executes linting, and identifies superfluous packages installed in the environment. It will notify, which packages can be removed from the environment.
+The default setting is adjusted for quick run (parameter `quick = TRUE`). Linting and cleansing suggestions will therefore not be executed but packages will be loaded (`library()`). Add/change the logical argument to `quick = FALSE` to install missing packages, execute linting, identify superfluous packages and to get notified, which packages can be removed from the environment:
+
+`loadenv::load_environment(packages, quick = FALSE)`

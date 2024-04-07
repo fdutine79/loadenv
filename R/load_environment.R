@@ -3,12 +3,13 @@
 #' Initiates the environment
 #'
 #' @param packages A vector with package names.
+#' @param quick Logical TRUE to skip prompts.
 #'
 #' @importFrom grDevices dev.list dev.off
 #' @importFrom usethis use_tidy_style
 #'
 #' @export
-load_environment <- function(packages) {
+load_environment <- function(packages, quick = TRUE) {
   # Clean up
   if (NROW(dev.list()) > 0) {
     dev.off()
@@ -38,16 +39,22 @@ load_environment <- function(packages) {
   packages <- gsub(".*/", "", packages)
 
   # Start linting
-  usethis::use_tidy_style()
+  if (quick == FALSE) {
+    usethis::use_tidy_style()
+  }
 
   # Package maintenance
-  prmt_pm <- readline(prompt = cat(paste0(
-    "\nYou might want to run package maintenance. Maintaining your packages will let you\n",
-    "know if your environment contains only neccessary packages. Maintenance might take\n",
-    "two minutes waiting time. Do you want to run package maintenance?\n\n",
-    "1: Yes\n",
-    "2: No"
-  )))
+  if (quick == FALSE) {
+    prmt_pm <- readline(prompt = cat(paste0(
+      "\nYou might want to run package maintenance. Maintaining your packages will let you\n",
+      "know if your environment contains only neccessary packages. Maintenance might take\n",
+      "two minutes waiting time. Do you want to run package maintenance?\n\n",
+      "1: Yes\n",
+      "2: No"
+    )))
+  } else {
+    prmt_pm <- 2
+  }
 
   # Unload packages
   if (as.integer(prmt_pm) == 1) {
