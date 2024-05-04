@@ -4,12 +4,12 @@
 \alias{load_environment}
 \title{Initiates the environment}
 \usage{
-load_environment(packages, quick = TRUE)
+load_environment(packages, fast = TRUE)
 }
 \arguments{
 \item{packages}{A vector with package names.}
 
-\item{quick}{Logical TRUE to skip prompts.}
+\item{fast}{Logical TRUE to skip prompts.}
 }
 \description{
 Initiates the environment

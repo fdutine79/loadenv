@@ -3,13 +3,13 @@
 #' Initiates the environment
 #'
 #' @param packages A vector with package names.
-#' @param quick Logical TRUE to skip prompts.
+#' @param fast Logical TRUE to skip prompts.
 #'
 #' @importFrom grDevices dev.list dev.off
 #' @importFrom usethis use_tidy_style
 #'
 #' @export
-load_environment <- function(packages, quick = TRUE) {
+load_environment <- function(packages, fast = TRUE) {
   # Clean up
   if (NROW(dev.list()) > 0) {
     dev.off()
@@ -32,19 +32,19 @@ load_environment <- function(packages, quick = TRUE) {
   options(max.print = 99999999)
 
   # Install missing packages
-  install_packages(packages)
+  install_packages(packages, fast = fast)
 
   # Build new packages vector
   # with GitHub hosts removed
   packages <- gsub(".*/", "", packages)
 
   # Start linting
-  if (quick == FALSE) {
+  if (fast == FALSE) {
     usethis::use_tidy_style()
   }
 
   # Package maintenance
-  if (quick == FALSE) {
+  if (fast == FALSE) {
     prmt_pm <- readline(prompt = cat(paste0(
       "\nYou might want to run package maintenance. Maintaining your packages will let you\n",
       "know if your environment contains only neccessary packages. Maintenance might take\n",

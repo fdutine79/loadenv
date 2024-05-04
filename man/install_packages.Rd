@@ -4,10 +4,14 @@
 \alias{install_packages}
 \title{Install missing packages from package list}
 \usage{
-install_packages(packages)
+install_packages(packages, fast = fast, reinstall = FALSE)
 }
 \arguments{
 \item{packages}{A vector with package names.}
+
+\item{fast}{Logical TRUE to skip prompts.}
+
+\item{reinstall}{Logical for recursive installation (updating packages)}
 }
 \description{
 Install missing packages from package list
