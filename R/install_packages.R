@@ -41,19 +41,34 @@ install_packages <- function(packages, fast = fast, reinstall = FALSE) {
         if (as.logical(available_on_cran(p)[1]) == FALSE) {
           # for Cran
           date_remote <- as.Date(packageDescription(p)$Date, format = "%Y-%m-%d")
-          if (date_local < date_remote) {
+          if (!is.null(date_local) && !is.na(date_local) &&
+            !is.null(date_remote) && !is.na(date_remote) &&
+            date_local < date_remote) {
             packages_collector <- cbind(packages_collector, p)
           }
         } else if (as.logical(available_on_github(p)[1]) == FALSE) {
           # for GitHub
           date_remote <- as.Date(gh(paste("GET /repos/", i, sep = ""))[["updated_at"]], format = "%Y-%m-%d")
-          if (date_local < date_remote) {
+          if (!is.null(date_local) && !is.na(date_local) &&
+            !is.null(date_remote) && !is.na(date_remote) &&
+            date_local < date_remote) {
             packages_collector <- cbind(packages_collector, i)
           }
         }
       }
     } else {
+      if (as.logical(available_on_cran(p)[1]) == FALSE) {
+        install.packages(p, dependencies = TRUE)
+      } else if (as.logical(available_on_github(p)[1]) == FALSE) {
+        devtools::install_github(i)
+      } else {
+        warning(paste0(
+          "Package '", i, "' neither found on CRAN nor GitHub\n",
+          "Skipping installation"
+        ))
+      }
 
+      cat(paste0("Juchuh", "\n\n"))
     }
   }
 
