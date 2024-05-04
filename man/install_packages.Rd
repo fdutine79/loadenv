@@ -4,7 +4,7 @@
 \alias{install_packages}
 \title{Install missing packages from package list}
 \usage{
-install_packages(packages, fast = fast, reinstall = FALSE)
+install_packages(packages, fast = fast)
 }
 \arguments{
 \item{packages}{A vector with package names.}
