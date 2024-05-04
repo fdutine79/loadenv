@@ -55,6 +55,7 @@ install_packages <- function(packages, fast = fast, reinstall = FALSE) {
             packages_collector <- cbind(packages_collector, i)
           }
         }
+        print(paste(p, " date_local: ", date_local, " date_remote: ", date_remote, sep = ""))
       }
     } else {
       if (as.logical(available_on_cran(p)[1]) == FALSE) {
